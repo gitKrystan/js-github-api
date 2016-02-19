@@ -12,6 +12,8 @@ $(function(){
     $.get(apiRequest, function(data) {
       userData = new UserData(data);
       $('#user-name').text(userData.getUserName());
+      $('#dates').text(userData.getStartEndDates());
+      $('#victim-info').show();
     });
   });
 });

@@ -10,6 +10,13 @@ UserData.prototype.getUserName = function () {
   }
 };
 
+UserData.prototype.getStartEndDates = function () {
+  var startDate = moment(this.rawData.created_at);
+  var endDate = moment(this.rawData.updated_at);
+  var dateFormat = 'MMMM Do YYYY';
+  return startDate.format(dateFormat) + ' - ' + endDate.format(dateFormat);
+};
+
 module.exports = UserData;
 
 // EXAMPLE DATA:

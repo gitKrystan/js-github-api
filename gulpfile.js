@@ -103,17 +103,17 @@ gulp.task('serve', function() {
 });
 
 gulp.task('jsBuild', ['jsBrowserify'], function() {
-  browserSyncServe.reload();
+  browserSync.reload();
 });
 
 gulp.task('htmlBuild', function() {
-  browserSyncServe.reload();
+  browserSync.reload();
 });
 
 gulp.task('cssBuild', ['sassToCSS'], function() {
-  browserSyncServe.reload();
+  browserSync.reload();
 });
 
 gulp.task('bowerBuild', ['bowerProduction'], function() {
-  browserSyncServe.reload();
+  browserSync.reload();
 });
