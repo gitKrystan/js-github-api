@@ -27,15 +27,18 @@ $(function(){
         if (repos[i].description) {
           repoListing += '...';
         }
-        $repoList.append('<li id="repo-' + i + '">' + repoListing + '</li>');
+        $repoList.append(
+          '<li>' +
+            '<a role="button" data-toggle="collapse"href="#repo-' + i + '">' +
+              repoListing +
+            '</a>' +
+            '<div id="repo-' + i + '" class="collapse"> ' +
+              '<div id="repo-description">' +
+                repos[i].description +
+              '</div>' +
+            '</div>' +
+          '</li>');
       }
     });
-  });
-
-  $('#repos').on('click', 'li', function() {
-    var $this = $(this);
-    var clickedRepo = userData.getRepoByIdString($this.attr('id'));
-    $this.append('<span class="repo-description"> ' +
-                  clickedRepo.description + '</span>');
   });
 });
