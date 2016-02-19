@@ -39,7 +39,7 @@ var getRepoRequestAndUpdateUserData = function(apiRepoRequest, userData) {
 
 var generateRepoListing = function(repo, i) {
   var repoListing = '<li>';
-  
+
   if (repo.description) {
     repoListing += '<a role="button" data-toggle="collapse" href="#repo-' + i + '">';
   }
@@ -50,7 +50,7 @@ var generateRepoListing = function(repo, i) {
     repoListing += '...' +
       '</a>' +
       '<div id="repo-' + i + '" class="collapse"> ' +
-        '<div id="repo-description">' +
+        '<div class="repo-description well">' +
           repo.description +
         '</div>' +
       '</div>' +

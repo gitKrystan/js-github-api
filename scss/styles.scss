@@ -1,9 +1,11 @@
 @import './../bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
-@import './../bower_components/bourbon/app/assets/stylesheets/bourbon';
+@import url(https://fonts.googleapis.com/css?family=Josefin+Slab);
+
+$container-width: 60%;
+$container-margin: 50% - $container-width / 2;
 
 $grey: #a4b0ac;
-$sky-dark: #364450;
-$sky-light: #444e5a;
+$sky: #364450;
 $star: #f8f4a2;
 
 html {
@@ -11,12 +13,23 @@ html {
 }
 
 body {
-  @include linear-gradient($sky-dark, $sky-light);
+  display: table;
+  background-color: $sky;
   height: 100%;
+  color: $grey;
+  font-family: 'Josefin Slab', serif;
 }
 
-.container {
-  width: 60%;
+p {
+  font-size: 2em;
+}
+
+li {
+  font-size: 2em;
+
+  a {
+    color: $star;
+  }
 }
 
 .sky {
@@ -33,18 +46,30 @@ body {
   background-color: $star;
 }
 
-.tombstone {
-  z-index: 10;
-  background-color: $grey;
+.container {
+  width: $container-width;
   height: 100%;
-  overflow: auto;
-  text-align: center;
 }
 
-// .clearfix:before,
-// .clearfix:after {
-//     content: ".";
-//     display: block;
-//     height: 0;
-//     overflow: hidden;
-// }
+.tombstone {
+  margin-top: 40px;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.3);
+  background-color: $grey;
+  padding: 10%;
+  min-width: 100%;
+  min-height: 80%;
+  overflow: auto;
+  text-align: center;
+  color: $sky;
+
+  .name {
+    font-size: 4em;
+  }
+}
+
+.repo-description {
+  border: 0;
+  background-color: $sky;
+  color: $star;
+  font-size: .75em;
+}
