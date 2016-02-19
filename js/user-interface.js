@@ -32,25 +32,32 @@ var getRepoRequestAndUpdateUserData = function(apiRepoRequest, userData) {
     $repoList.empty();
     repos = userData.setRepoData(data);
     for (var i = 0; i < repos.length; i++) {
-      generateRepoListing(repos[i]);
+      $repoList.append(generateRepoListing(repos[i], i));
     }
   });
 };
 
-var generateRepoListing = function(repo) {
-  var repoListing = repo.name;
+var generateRepoListing = function(repo, i) {
+  var repoListing = '<li>';
+  
   if (repo.description) {
-    repoListing += '...';
+    repoListing += '<a role="button" data-toggle="collapse" href="#repo-' + i + '">';
   }
-  $repoList.append(
-    '<li>' +
-      '<a role="button" data-toggle="collapse"href="#repo-' + i + '">' +
-        repoListing +
+
+  repoListing += repo.name;
+
+  if (repo.description) {
+    repoListing += '...' +
       '</a>' +
       '<div id="repo-' + i + '" class="collapse"> ' +
         '<div id="repo-description">' +
           repo.description +
         '</div>' +
       '</div>' +
-    '</li>');
+    '</li>';
+  } else {
+    repoListing += '</a></li>';
+  }
+
+  return repoListing;
 };
