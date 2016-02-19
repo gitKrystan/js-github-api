@@ -11,11 +11,9 @@ var utilities = require('gulp-util');
 
 var lib = require('bower-files')({
   'overrides': {
-    'bootstrap': {
+    'bootstrap-sass': {
       'main': [
-        'less/bootstrap.less',
-        'dist/css/bootstrap.css',
-        'dist/js/bootstrap.js'
+        'assets/javascripts/bootstrap.js'
       ]
     }
   }
@@ -65,13 +63,7 @@ gulp.task('jsBower', function() {
     .pipe(gulp.dest('./build/js'));
 });
 
-gulp.task('cssBower', function() {
-  return gulp.src(lib.ext('css').files)
-    .pipe(concat('vendor.css'))
-    .pipe(gulp.dest('./build/css'));
-});
-
-gulp.task('bowerProduction', ['jsBower', 'cssBower']);
+gulp.task('bowerProduction', ['jsBower']);
 
 gulp.task('clean', function() {
   return del(['build', 'tmp']);

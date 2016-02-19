@@ -1,0 +1,50 @@
+@import './../bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
+@import './../bower_components/bourbon/app/assets/stylesheets/bourbon';
+
+$grey: #a4b0ac;
+$sky-dark: #364450;
+$sky-light: #444e5a;
+$star: #f8f4a2;
+
+html {
+  height: 100%;
+}
+
+body {
+  @include linear-gradient($sky-dark, $sky-light);
+  height: 100%;
+}
+
+.container {
+  width: 60%;
+}
+
+.sky {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background-color: $star;
+}
+
+.tombstone {
+  z-index: 10;
+  background-color: $grey;
+  height: 100%;
+  overflow: auto;
+  text-align: center;
+}
+
+// .clearfix:before,
+// .clearfix:after {
+//     content: ".";
+//     display: block;
+//     height: 0;
+//     overflow: hidden;
+// }
