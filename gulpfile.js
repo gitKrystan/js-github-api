@@ -4,6 +4,8 @@ var concat = require('gulp-concat');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var uglify = require('gulp-uglify');
+var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
 var lib = require('bower-files')({
   'overrides': {
     'bootstrap': {
@@ -39,6 +41,14 @@ gulp.task('minifyScripts', ['jsBrowserify'], function() {
   return gulp.src('./build/js/app.js')
     .pipe(uglify())
     .pipe(gulp.dest('./build/js'));
+});
+
+gulp.task('cssBuild', function() {
+  return gulp.src('scss/*.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./build/css'));
 });
 
 gulp.task('jsBower', function() {
