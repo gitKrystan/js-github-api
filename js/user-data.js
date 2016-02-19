@@ -1,6 +1,10 @@
-function UserData(data) {
-  this.rawData = data;
+function UserData() {
 }
+
+UserData.prototype.setRawData = function (data) {
+  this.rawData = data;
+  return this.rawData;
+};
 
 UserData.prototype.getUserName = function () {
   if (this.rawData.name) {
@@ -15,6 +19,11 @@ UserData.prototype.getStartEndDates = function () {
   var endDate = moment(this.rawData.updated_at);
   var dateFormat = 'MMMM Do YYYY';
   return startDate.format(dateFormat) + ' - ' + endDate.format(dateFormat);
+};
+
+UserData.prototype.setRepoData = function (data) {
+  this.repoData = data;
+  return this.repoData;
 };
 
 module.exports = UserData;
