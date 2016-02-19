@@ -10,12 +10,7 @@ $(function(){
     $('#next-victim input').val('');
 
     var apiUserRequest = 'https://api.github.com/users/' + login;
-    $.get(apiUserRequest, function(data) {
-      userData.setRawData(data);
-      $('#user-name').text(userData.getUserName());
-      $('#dates').text(userData.getStartEndDates());
-      $('#victim-info').show();
-    });
+    getUserRequestAndUpdateUserData(apiUserRequest, userData);
 
     var apiRepoRequest = apiUserRequest + '/repos';
     $.get(apiRepoRequest, function(data) {
@@ -42,3 +37,12 @@ $(function(){
     });
   });
 });
+
+var getUserRequestAndUpdateUserData = function(apiUserRequest, userData) {
+  $.get(apiUserRequest, function(data) {
+    userData.setRawData(data);
+    $('#user-name').text(userData.getUserName());
+    $('#dates').text(userData.getStartEndDates());
+    $('#victim-info').show();
+  });
+};
