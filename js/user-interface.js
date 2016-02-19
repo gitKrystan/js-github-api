@@ -13,28 +13,7 @@ $(function(){
     getUserRequestAndUpdateUserData(apiUserRequest, userData);
 
     var apiRepoRequest = apiUserRequest + '/repos';
-    $.get(apiRepoRequest, function(data) {
-      var $repoList = $('#repos');
-      $repoList.empty();
-      repos = userData.setRepoData(data);
-      for (var i = 0; i < repos.length; i++) {
-        var repoListing = repos[i].name;
-        if (repos[i].description) {
-          repoListing += '...';
-        }
-        $repoList.append(
-          '<li>' +
-            '<a role="button" data-toggle="collapse"href="#repo-' + i + '">' +
-              repoListing +
-            '</a>' +
-            '<div id="repo-' + i + '" class="collapse"> ' +
-              '<div id="repo-description">' +
-                repos[i].description +
-              '</div>' +
-            '</div>' +
-          '</li>');
-      }
-    });
+    getRepoRequestAndUpdateUserData(apiRepoRequest, userData);
   });
 });
 
@@ -44,5 +23,30 @@ var getUserRequestAndUpdateUserData = function(apiUserRequest, userData) {
     $('#user-name').text(userData.getUserName());
     $('#dates').text(userData.getStartEndDates());
     $('#victim-info').show();
+  });
+};
+
+var getRepoRequestAndUpdateUserData = function(apiRepoRequest, userData) {
+  $.get(apiRepoRequest, function(data) {
+    var $repoList = $('#repos');
+    $repoList.empty();
+    repos = userData.setRepoData(data);
+    for (var i = 0; i < repos.length; i++) {
+      var repoListing = repos[i].name;
+      if (repos[i].description) {
+        repoListing += '...';
+      }
+      $repoList.append(
+        '<li>' +
+          '<a role="button" data-toggle="collapse"href="#repo-' + i + '">' +
+            repoListing +
+          '</a>' +
+          '<div id="repo-' + i + '" class="collapse"> ' +
+            '<div id="repo-description">' +
+              repos[i].description +
+            '</div>' +
+          '</div>' +
+        '</li>');
+    }
   });
 };
