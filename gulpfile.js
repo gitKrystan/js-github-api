@@ -7,6 +7,8 @@ var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var del = require('del');
+var utilities = require('gulp-util');
+
 var lib = require('bower-files')({
   'overrides': {
     'bootstrap': {
@@ -18,6 +20,8 @@ var lib = require('bower-files')({
     }
   }
 });
+
+var buildProduction = utilities.env.production;
 
 gulp.task('jshint', function() {
   return gulp.src(['js/*.js', 'spec/*.js', '*.js'])
@@ -69,4 +73,15 @@ gulp.task('bowerProduction', ['jsBower', 'cssBower']);
 
 gulp.task('clean', function() {
   return del(['build', 'tmp']);
+});
+
+gulp.task('build', ['clean'], function() {
+  if (buildProduction) {
+    gulp.start('minifyScripts');
+  } else {
+    gulp.start('jsBrowserify');
+  }
+  gulp.start('bowerProduction');
+  gulp.start('cssBuild');
+  gulp.start('jshint');
 });
