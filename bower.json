@@ -1,0 +1,21 @@
+{
+  "name": "githubapi",
+  "description": "",
+  "main": "js/scripts.js",
+  "authors": [
+    "Krystan Menne <kmenne@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/gitKrystan/js-github-api",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.0"
+  }
+}
