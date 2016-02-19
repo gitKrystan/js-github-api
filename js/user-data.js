@@ -3,7 +3,11 @@ function UserData(data) {
 }
 
 UserData.prototype.getUserName = function () {
-  return this.rawData.name;
+  if (this.rawData.name) {
+    return this.rawData.name + ' (' + this.rawData.login + ')';
+  } else {
+    return this.rawData.login;
+  }
 };
 
 module.exports = UserData;
