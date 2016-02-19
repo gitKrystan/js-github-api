@@ -6,6 +6,7 @@ var source = require('vinyl-source-stream');
 var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
+var del = require('del');
 var lib = require('bower-files')({
   'overrides': {
     'bootstrap': {
@@ -65,3 +66,7 @@ gulp.task('cssBower', function() {
 });
 
 gulp.task('bowerProduction', ['jsBower', 'cssBower']);
+
+gulp.task('clean', function() {
+  return del(['build', 'tmp']);
+});
