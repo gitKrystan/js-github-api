@@ -26,6 +26,11 @@ UserData.prototype.setRepoData = function (data) {
   return this.repoData;
 };
 
+UserData.prototype.getRepoByIdString = function (idString) {
+  var id = idString.split('-')[1];
+  return this.repoData[id];
+};
+
 module.exports = UserData;
 
 // EXAMPLE DATA:
